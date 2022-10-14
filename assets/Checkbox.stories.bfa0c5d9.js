@@ -1,0 +1,2 @@
+import{a as e}from"./index.bc06a25d.js";import"./index.90eb0a03.js";import"./iframe.c1865c25.js";import"./index.36fbe637.js";import"./jsx-runtime.f954b86b.js";const i={title:"Form/Checkbox",component:e,parameters:{layout:"centered"},args:{disabled:!1},argTypes:{disabled:{control:{type:"boolean"}}}},d={},m={args:{disabled:!0}},l=["Primary","Disabled"];export{m as Disabled,d as Primary,l as __namedExportsOrder,i as default};
+//# sourceMappingURL=Checkbox.stories.bfa0c5d9.js.map
