@@ -4,12 +4,9 @@ import { Avatar, AvatarProps } from '@ignite-ui/react'
 export default {
   title: 'Data Display/Avatar',
   component: Avatar,
-  parameters: {
-    layout: 'centered',
-  },
   args: {
-    src: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-    alt: 'Some Person picture',
+    src: 'https://github.com/jrxr.png',
+    alt: 'Jrxr',
   },
   argTypes: {
     src: {
@@ -18,12 +15,12 @@ export default {
       },
     },
   },
-} as Meta<AvatarProps>
+} as Meta
 
 export const Primary: StoryObj<AvatarProps> = {}
 
 export const WithFallback: StoryObj<AvatarProps> = {
   args: {
-    src: '',
+    src: undefined,
   },
 }

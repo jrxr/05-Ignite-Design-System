@@ -101,38 +101,14 @@ var {
   }
 });
 
-// src/components/Card.tsx
-var Card = styled("div", {
+// src/components/Box.tsx
+var Box = styled("div", {
   padding: "$4",
   borderRadius: "$md",
   backgroundColor: "$gray800",
   border: "1px solid $gray600"
 });
-Card.displayName = "Card";
-
-// src/components/Heading.tsx
-var Heading = styled("h2", {
-  fontFamily: "$default",
-  lineHeight: "$shorter",
-  margin: 0,
-  color: "$gray100",
-  variants: {
-    size: {
-      sm: { fontSize: "$xl" },
-      md: { fontSize: "$2xl " },
-      lg: { fontSize: "$4xl" },
-      "2xl": { fontSize: "$5xl" },
-      "3xl": { fontSize: "$6xl" },
-      "4xl": { fontSize: "$7xl" },
-      "5xl": { fontSize: "$8xl" },
-      "6xl": { fontSize: "$9xl" }
-    }
-  },
-  defaultVariants: {
-    size: "md"
-  }
-});
-Heading.displayName = "Heading";
+Box.displayName = "Box";
 
 // src/components/Text.tsx
 var Text = styled("p", {
@@ -162,6 +138,30 @@ var Text = styled("p", {
   }
 });
 Text.displayName = "Text";
+
+// src/components/Heading.tsx
+var Heading = styled("h2", {
+  fontFamily: "$default",
+  lineHeight: "$shorter",
+  margin: 0,
+  color: "$gray100",
+  variants: {
+    size: {
+      sm: { fontSize: "$xl" },
+      md: { fontSize: "$2xl " },
+      lg: { fontSize: "$4xl" },
+      "2xl": { fontSize: "$5xl" },
+      "3xl": { fontSize: "$6xl" },
+      "4xl": { fontSize: "$7xl" },
+      "5xl": { fontSize: "$8xl" },
+      "6xl": { fontSize: "$9xl" }
+    }
+  },
+  defaultVariants: {
+    size: "md"
+  }
+});
+Heading.displayName = "Heading";
 
 // src/components/Avatar/styles.ts
 import * as Avatar from "@radix-ui/react-avatar";
@@ -209,218 +209,6 @@ function Avatar2(props) {
   });
 }
 Avatar2.displayName = "Avatar";
-
-// src/components/TextInput/styles.ts
-var TextInputContainer = styled("div", {
-  backgroundColor: "$gray900",
-  padding: "$3 $4",
-  borderRadius: "$sm",
-  boxSizing: "border-box",
-  border: "2px solid $gray900",
-  display: "flex",
-  alignItems: "baseline",
-  "&:has(input:focus)": {
-    borderColor: "$ignite300"
-  },
-  "&:has(input:disabled)": {
-    opacity: 0.5,
-    cursor: "not-allowed"
-  }
-});
-var Prefix = styled("span", {
-  fontFamily: "$default",
-  fontSize: "$sm",
-  color: "$gray400",
-  fontWeight: "$regular"
-});
-var Input = styled("input", {
-  fontFamily: "$default",
-  fontSize: "$sm",
-  color: "$white",
-  fontWeight: "$regular",
-  background: "transparent",
-  border: 0,
-  width: "100%",
-  "&:focus": {
-    outline: 0
-  },
-  "&:disabled": {
-    cursor: "not-allowed"
-  },
-  "&:placeholder": {
-    color: "$gray400"
-  }
-});
-
-// src/components/TextInput/index.tsx
-import { jsx as jsx2, jsxs as jsxs2 } from "react/jsx-runtime";
-function TextInput({ prefix, ...props }) {
-  return /* @__PURE__ */ jsxs2(TextInputContainer, {
-    children: [
-      !!prefix && /* @__PURE__ */ jsx2(Prefix, {
-        children: prefix
-      }),
-      /* @__PURE__ */ jsx2(Input, {
-        ...props
-      })
-    ]
-  });
-}
-TextInputContainer.displayName = "TextInput";
-
-// src/components/MultiStep/styles.ts
-var MultiStepContainer = styled("div", {});
-var Label = styled(Text, {
-  color: "$gray200",
-  variants: {
-    size: {
-      xs: {
-        fontSize: "$xs"
-      }
-    }
-  },
-  defaultVariants: {
-    size: "xs"
-  }
-});
-var Steps = styled("div", {
-  display: "grid",
-  gap: "$2",
-  marginTop: "$1",
-  gridTemplateColumns: "repeat(var(--steps-size), 1fr)"
-});
-var Step = styled("div", {
-  height: "$1",
-  borderRadius: "$xs",
-  backgroundColor: "$gray600",
-  variants: {
-    active: {
-      true: { backgroundColor: "$gray100" }
-    }
-  }
-});
-
-// src/components/MultiStep/index.tsx
-import { jsx as jsx3, jsxs as jsxs3 } from "react/jsx-runtime";
-function MultiStep({ size, currentStep = 1 }) {
-  return /* @__PURE__ */ jsxs3(MultiStepContainer, {
-    children: [
-      /* @__PURE__ */ jsxs3(Label, {
-        children: [
-          "Passo ",
-          currentStep,
-          " de ",
-          size
-        ]
-      }),
-      /* @__PURE__ */ jsx3(Steps, {
-        css: { "--steps-size": size },
-        children: Array.from({ length: size }, (_, i) => i + 1).map((step) => /* @__PURE__ */ jsx3(Step, {
-          active: currentStep >= step
-        }, step))
-      })
-    ]
-  });
-}
-MultiStep.displayName = "MultiStep";
-
-// src/components/Checkbox/index.tsx
-import { Check } from "phosphor-react";
-
-// src/components/Checkbox/styles.ts
-import * as Checkbox from "@radix-ui/react-checkbox";
-var CheckboxContainer = styled(Checkbox.Root, {
-  all: "unset",
-  width: "$6",
-  height: "$6",
-  backgroundColor: "$gray900",
-  borderRadius: "$xs",
-  lineHeight: 0,
-  cursor: "pointer",
-  overflow: "hidden",
-  boxSizing: "border-box",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  '&[data-state="checked"]': {
-    backgroundColor: "$ignite300"
-  },
-  "&:focus": {
-    border: "2px solid $ignite300"
-  },
-  "&:disabled": {
-    cursor: "not-allowed"
-  }
-});
-var slideIn = keyframes({
-  from: {
-    transform: "translateY(-100%)"
-  },
-  to: {
-    transform: "translateY(0)"
-  }
-});
-var slideOut = keyframes({
-  from: {
-    transform: "translateY(0)"
-  },
-  to: {
-    transform: "translateY(-100%)"
-  }
-});
-var CheckboxIndicator = styled(Checkbox.Indicator, {
-  color: "$white",
-  width: "$4",
-  height: "$4",
-  '&[data-state="checked"]': {
-    animation: `${slideIn} 200ms ease-out`
-  },
-  '&[data-state="unchecked"]': {
-    animation: `${slideOut} 200ms ease-out`
-  }
-});
-
-// src/components/Checkbox/index.tsx
-import { jsx as jsx4 } from "react/jsx-runtime";
-function Checkbox2({ ...props }) {
-  return /* @__PURE__ */ jsx4(CheckboxContainer, {
-    ...props,
-    children: /* @__PURE__ */ jsx4(CheckboxIndicator, {
-      asChild: true,
-      children: /* @__PURE__ */ jsx4(Check, {
-        weight: "bold"
-      })
-    })
-  });
-}
-Checkbox2.displayName = "Checkbox";
-
-// src/components/TextArea.tsx
-var TextArea = styled("textarea", {
-  backgroundColor: "$gray900",
-  padding: "$3 $4",
-  borderRadius: "$sm",
-  boxSizing: "border-box",
-  border: "2px solid $gray900",
-  fontFamily: "$default",
-  fontSize: "$sm",
-  color: "$white",
-  fontWeight: "$regular",
-  resize: "vertical",
-  minHeight: 80,
-  "&:focus": {
-    outline: 0,
-    borderColor: "$ignite300"
-  },
-  "&:disabled": {
-    opacity: 0.5,
-    cursor: "not-allowed"
-  },
-  "&:placeholder": {
-    color: "$gray400"
-  }
-});
-TextArea.displayName = "TextArea";
 
 // src/components/Button.tsx
 var Button = styled("button", {
@@ -494,14 +282,382 @@ var Button = styled("button", {
   }
 });
 Button.displayName = "Button";
+
+// src/components/TextInput/styles.ts
+var TextInputContainer = styled("div", {
+  backgroundColor: "$gray900",
+  padding: "$3 $4",
+  borderRadius: "$sm",
+  boxSizing: "border-box",
+  border: "2px solid $gray900",
+  display: "flex",
+  alignItems: "baseline",
+  "&:has(input:focus)": {
+    borderColor: "$ignite300"
+  },
+  "&:has(input:disabled)": {
+    opacity: 0.5,
+    cursor: "not-allowed"
+  }
+});
+var Prefix = styled("span", {
+  fontFamily: "$default",
+  fontSize: "$sm",
+  color: "$gray400",
+  fontWeight: "$regular"
+});
+var Input = styled("input", {
+  fontFamily: "$default",
+  fontSize: "$sm",
+  color: "$white",
+  fontWeight: "$regular",
+  background: "transparent",
+  border: 0,
+  width: "100%",
+  "&:focus": {
+    outline: 0
+  },
+  "&:disabled": {
+    cursor: "not-allowed"
+  },
+  "&:placeholder": {
+    color: "$gray400"
+  }
+});
+
+// src/components/TextInput/index.tsx
+import { jsx as jsx2, jsxs as jsxs2 } from "react/jsx-runtime";
+function TextInput({ prefix, ...props }) {
+  return /* @__PURE__ */ jsxs2(TextInputContainer, {
+    children: [
+      !!prefix && /* @__PURE__ */ jsx2(Prefix, {
+        children: prefix
+      }),
+      /* @__PURE__ */ jsx2(Input, {
+        ...props
+      })
+    ]
+  });
+}
+TextInputContainer.displayName = "TextInput";
+
+// src/components/TextArea.tsx
+var TextArea = styled("textarea", {
+  backgroundColor: "$gray900",
+  padding: "$3 $4",
+  borderRadius: "$sm",
+  boxSizing: "border-box",
+  border: "2px solid $gray900",
+  fontFamily: "$default",
+  fontSize: "$sm",
+  color: "$white",
+  fontWeight: "$regular",
+  resize: "vertical",
+  minHeight: 80,
+  "&:focus": {
+    outline: 0,
+    borderColor: "$ignite300"
+  },
+  "&:disabled": {
+    opacity: 0.5,
+    cursor: "not-allowed"
+  },
+  "&:placeholder": {
+    color: "$gray400"
+  }
+});
+TextArea.displayName = "TextArea";
+
+// src/components/Checkbox/index.tsx
+import { Check } from "phosphor-react";
+
+// src/components/Checkbox/styles.ts
+import * as Checkbox from "@radix-ui/react-checkbox";
+var CheckboxContainer = styled(Checkbox.Root, {
+  all: "unset",
+  width: "$6",
+  height: "$6",
+  backgroundColor: "$gray900",
+  borderRadius: "$xs",
+  lineHeight: 0,
+  cursor: "pointer",
+  overflow: "hidden",
+  boxSizing: "border-box",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  '&[data-state="checked"]': {
+    backgroundColor: "$ignite300"
+  },
+  "&:focus": {
+    border: "2px solid $ignite300"
+  },
+  "&:disabled": {
+    cursor: "not-allowed"
+  }
+});
+var slideIn = keyframes({
+  from: {
+    transform: "translateY(-100%)"
+  },
+  to: {
+    transform: "translateY(0)"
+  }
+});
+var slideOut = keyframes({
+  from: {
+    transform: "translateY(0)"
+  },
+  to: {
+    transform: "translateY(-100%)"
+  }
+});
+var CheckboxIndicator = styled(Checkbox.Indicator, {
+  color: "$white",
+  width: "$4",
+  height: "$4",
+  '&[data-state="checked"]': {
+    animation: `${slideIn} 200ms ease-out`
+  },
+  '&[data-state="unchecked"]': {
+    animation: `${slideOut} 200ms ease-out`
+  }
+});
+
+// src/components/Checkbox/index.tsx
+import { jsx as jsx3 } from "react/jsx-runtime";
+function Checkbox2({ ...props }) {
+  return /* @__PURE__ */ jsx3(CheckboxContainer, {
+    ...props,
+    children: /* @__PURE__ */ jsx3(CheckboxIndicator, {
+      asChild: true,
+      children: /* @__PURE__ */ jsx3(Check, {
+        weight: "bold"
+      })
+    })
+  });
+}
+Checkbox2.displayName = "Checkbox";
+
+// src/components/MultiStep/styles.ts
+var MultiStepContainer = styled("div", {});
+var Label = styled(Text, {
+  color: "$gray200",
+  variants: {
+    size: {
+      xs: {
+        fontSize: "$xs"
+      }
+    }
+  },
+  defaultVariants: {
+    size: "xs"
+  }
+});
+var Steps = styled("div", {
+  display: "grid",
+  gap: "$2",
+  marginTop: "$1",
+  gridTemplateColumns: "repeat(var(--steps-size), 1fr)"
+});
+var Step = styled("div", {
+  height: "$1",
+  borderRadius: "$xs",
+  backgroundColor: "$gray600",
+  variants: {
+    active: {
+      true: { backgroundColor: "$gray100" }
+    }
+  }
+});
+
+// src/components/MultiStep/index.tsx
+import { jsx as jsx4, jsxs as jsxs3 } from "react/jsx-runtime";
+function MultiStep({ size, currentStep = 1 }) {
+  return /* @__PURE__ */ jsxs3(MultiStepContainer, {
+    children: [
+      /* @__PURE__ */ jsxs3(Label, {
+        children: [
+          "Passo ",
+          currentStep,
+          " de ",
+          size
+        ]
+      }),
+      /* @__PURE__ */ jsx4(Steps, {
+        css: { "--steps-size": size },
+        children: Array.from({ length: size }, (_, i) => i + 1).map((step) => /* @__PURE__ */ jsx4(Step, {
+          active: currentStep >= step
+        }, step))
+      })
+    ]
+  });
+}
+MultiStep.displayName = "MultiStep";
+
+// src/components/Tooltip/index.tsx
+import * as TooltipPrimitive from "@radix-ui/react-tooltip";
+
+// src/components/Tooltip/styles.ts
+import * as Tooltip from "@radix-ui/react-tooltip";
+var TooltipContent = styled(Tooltip.Content, {
+  padding: "$3 $4",
+  background: "$gray900",
+  color: "$gray100",
+  fontFamily: "$default",
+  fontSize: "$sm",
+  borderRadius: "$xs",
+  fontWeight: "$medium",
+  filter: "drop-shadow(4px 16px 24px rgba(0, 0, 0, 0.25))"
+});
+var TooltipArrow = styled(Tooltip.Arrow, {
+  fill: "$gray900"
+});
+
+// src/components/Tooltip/index.tsx
+import { jsx as jsx5, jsxs as jsxs4 } from "react/jsx-runtime";
+function Tooltip2({ content, children, ...props }) {
+  return /* @__PURE__ */ jsx5(TooltipPrimitive.Provider, {
+    children: /* @__PURE__ */ jsxs4(TooltipPrimitive.Root, {
+      ...props,
+      children: [
+        /* @__PURE__ */ jsx5(TooltipPrimitive.Trigger, {
+          asChild: true,
+          children
+        }),
+        /* @__PURE__ */ jsx5(TooltipPrimitive.Portal, {
+          children: /* @__PURE__ */ jsxs4(TooltipContent, {
+            children: [
+              /* @__PURE__ */ jsx5(TooltipArrow, {}),
+              content
+            ]
+          })
+        })
+      ]
+    })
+  });
+}
+Tooltip2.displayName = "Tooltip";
+
+// src/components/Toast/index.tsx
+import * as ToastPrimitive from "@radix-ui/react-toast";
+import { X } from "phosphor-react";
+
+// src/components/Toast/styles.ts
+import * as Toast from "@radix-ui/react-toast";
+var VIEWPORT_PADDING = 32;
+var hide = keyframes({
+  "0%": { opacity: 1 },
+  "100%": { opacity: 0 }
+});
+var slideIn2 = keyframes({
+  from: { transform: `translateX(calc(100% + ${VIEWPORT_PADDING}px))` },
+  to: { transform: "translateX(0)" }
+});
+var swipeOut = keyframes({
+  from: { transform: "translateX(var(--radix-toast-swipe-end-x))" },
+  to: { transform: `translateX(calc(100% + ${VIEWPORT_PADDING}px))` }
+});
+var ToastRoot = styled(Toast.Root, {
+  padding: "$3 $4",
+  background: "$gray800",
+  border: "1px solid $gray600",
+  borderRadius: "$sm",
+  fontFamily: "$default",
+  position: "relative",
+  "@media (prefers-reduced-motion: no-preference)": {
+    '&[data-state="open"]': {
+      animation: `${slideIn2} 150ms cubic-bezier(0.16, 1, 0.3, 1)`
+    },
+    '&[data-state="closed"]': {
+      animation: `${hide} 100ms ease-in`
+    },
+    '&[data-swipe="move"]': {
+      transform: "translateX(var(--radix-toast-swipe-move-x))"
+    },
+    '&[data-swipe="cancel"]': {
+      transform: "translateX(0)",
+      transition: "transform 200ms ease-out"
+    },
+    '&[data-swipe="end"]': {
+      animation: `${swipeOut} 100ms ease-out`
+    }
+  }
+});
+var ToastTitle = styled(Toast.Title, {
+  color: "$white",
+  fontWeight: "$bold",
+  fontSize: "$xl",
+  lineHeight: "$base"
+});
+var ToastDescription = styled(Toast.Description, {
+  color: "$gray200",
+  fontSize: "$sm",
+  lineHeight: "$base",
+  marginTop: "$1"
+});
+var ToastClose = styled(Toast.Close, {
+  position: "absolute",
+  top: "$4",
+  right: "$4",
+  background: "none",
+  border: "none",
+  color: "$gray200",
+  cursor: "pointer"
+});
+var ToastViewPort = styled(Toast.Viewport, {
+  position: "fixed",
+  bottom: 0,
+  right: 0,
+  display: "flex",
+  flexDirection: "column",
+  padding: VIEWPORT_PADDING,
+  gap: 10,
+  width: 390,
+  maxWidth: "100vw",
+  margin: 0,
+  listStyle: "none",
+  zIndex: 2147483647,
+  outline: "none"
+});
+
+// src/components/Toast/index.tsx
+import { jsx as jsx6, jsxs as jsxs5 } from "react/jsx-runtime";
+function Toast2({ title, description, ...props }) {
+  return /* @__PURE__ */ jsxs5(ToastPrimitive.Provider, {
+    children: [
+      /* @__PURE__ */ jsxs5(ToastRoot, {
+        ...props,
+        children: [
+          /* @__PURE__ */ jsx6(ToastTitle, {
+            children: title
+          }),
+          description && /* @__PURE__ */ jsx6(ToastDescription, {
+            children: description
+          }),
+          /* @__PURE__ */ jsx6(ToastClose, {
+            children: /* @__PURE__ */ jsx6(X, {
+              weight: "light",
+              size: 20
+            })
+          })
+        ]
+      }),
+      /* @__PURE__ */ jsx6(ToastViewPort, {})
+    ]
+  });
+}
+Toast2.displayName = "Toast";
 export {
   Avatar2 as Avatar,
+  Box,
   Button,
-  Card,
   Checkbox2 as Checkbox,
   Heading,
   MultiStep,
   Text,
   TextArea,
-  TextInput
+  TextInput,
+  Toast2 as Toast,
+  Tooltip2 as Tooltip
 };
